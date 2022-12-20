@@ -193,6 +193,47 @@ class FFAppState extends ChangeNotifier {
 
     _randomNum = _value;
   }
+
+  dynamic _TimeZoneValue = jsonDecode(
+      '{\"status\":\"true\",\"message\":\"Data Found\",\"errors\":[],\"response\":[{\"timezone_id\":\"2\",\"timezone\":\"Pacific/Apia\",\"time_difference1\":\"-11\",\"time_difference2\":\"-11\",\"timezone_cities\":\"Midway Island, Samoa\"},{\"timezone_id\":\"3\",\"timezone\":\"Pacific/Honolulu\",\"time_difference1\":\"-10\",\"time_difference2\":\"-10\",\"timezone_cities\":\"Hawaii\"},{\"timezone_id\":\"4\",\"timezone\":\"America/Adak\",\"time_difference1\":\"-9\",\"time_difference2\":\"-10\",\"timezone_cities\":\"Alaska\"},{\"timezone_id\":\"5\",\"timezone\":\"America/Juneau\",\"time_difference1\":\"-8\",\"time_difference2\":\"-9\",\"timezone_cities\":\"Pacific Time (US &amp; Canada)\"},{\"timezone_id\":\"6\",\"timezone\":\"America/Los_Angeles\",\"time_difference1\":\"-7\",\"time_difference2\":\"-8\",\"timezone_cities\":\"Mountain Time (US &amp; Canada)\"},{\"timezone_id\":\"7\",\"timezone\":\"America/Denver\",\"time_difference1\":\"-6\",\"time_difference2\":\"-7\",\"timezone_cities\":\"Central Time (US &amp; Canada), Mexico City\"},{\"timezone_id\":\"8\",\"timezone\":\"America/Chicago\",\"time_difference1\":\"-5\",\"time_difference2\":\"-6\",\"timezone_cities\":\"Eastern Time (US &amp; Canada), Bogota, Lima\"},{\"timezone_id\":\"9\",\"timezone\":\"America/New_York\",\"time_difference1\":\"-4\",\"time_difference2\":\"-5\",\"timezone_cities\":\"Atlantic Time (Canada), Caracas, La Paz\"},{\"timezone_id\":\"10\",\"timezone\":\"Canada/Newfoundland\",\"time_difference1\":\"-2.5\",\"time_difference2\":\"-3.5\",\"timezone_cities\":\"Newfoundland\"},{\"timezone_id\":\"11\",\"timezone\":\"America/Argentina/Buenos_Aires\",\"time_difference1\":\"-3\",\"time_difference2\":\"-3\",\"timezone_cities\":\"Brazil, Buenos Aires, Georgetown\"},{\"timezone_id\":\"12\",\"timezone\":\"America/Noronha\",\"time_difference1\":\"-2\",\"time_difference2\":\"-2\",\"timezone_cities\":\"Mid-Atlantic\"},{\"timezone_id\":\"13\",\"timezone\":\"Atlantic/Azores\",\"time_difference1\":\"-1\",\"time_difference2\":\"-1\",\"timezone_cities\":\"Azores, Cape Verde Islands\"},{\"timezone_id\":\"14\",\"timezone\":\"Africa/Bamako\",\"time_difference1\":\"0\",\"time_difference2\":\"0\",\"timezone_cities\":\"Western Europe Time, London, Lisbon, Casablanca\"},{\"timezone_id\":\"15\",\"timezone\":\"Atlantic/Canary\",\"time_difference1\":\"1\",\"time_difference2\":\"0\",\"timezone_cities\":\"Brussels, Copenhagen, Madrid, Paris\"},{\"timezone_id\":\"16\",\"timezone\":\"Arctic/Longyearbyen\",\"time_difference1\":\"2\",\"time_difference2\":\"1\",\"timezone_cities\":\"Kaliningrad, South Africa\"},{\"timezone_id\":\"17\",\"timezone\":\"Asia/Baghdad\",\"time_difference1\":\"3\",\"time_difference2\":\"3\",\"timezone_cities\":\"Baghdad, Riyadh, Moscow, St. Petersburg\"},{\"timezone_id\":\"18\",\"timezone\":\"Asia/Dubai\",\"time_difference1\":\"4\",\"time_difference2\":\"4\",\"timezone_cities\":\"Abu Dhabi, Muscat, Baku, Tbilisi\"},{\"timezone_id\":\"19\",\"timezone\":\"Asia/Kabul\",\"time_difference1\":\"4.5\",\"time_difference2\":\"4.5\",\"timezone_cities\":\"Kabul\"},{\"timezone_id\":\"20\",\"timezone\":\"Asia/Oral\",\"time_difference1\":\"5\",\"time_difference2\":\"5\",\"timezone_cities\":\"Ekaterinburg, Islamabad, Karachi, Tashkent\"},{\"timezone_id\":\"21\",\"timezone\":\"Asia/Calcutta\",\"time_difference1\":\"5.5\",\"time_difference2\":\"5.5\",\"timezone_cities\":\"Bombay, Calcutta, Madras, New Delhi\"},{\"timezone_id\":\"22\",\"timezone\":\"Asia/Katmandu\",\"time_difference1\":\"5.75\",\"time_difference2\":\"5.75\",\"timezone_cities\":\"Kathmandu\"},{\"timezone_id\":\"23\",\"timezone\":\"Asia/Qyzylorda\",\"time_difference1\":\"6\",\"time_difference2\":\"6\",\"timezone_cities\":\"Almaty, Dhaka, Colombo\"},{\"timezone_id\":\"24\",\"timezone\":\"Asia/Bangkok\",\"time_difference1\":\"7\",\"time_difference2\":\"7\",\"timezone_cities\":\"Bangkok, Hanoi, Jakarta\"},{\"timezone_id\":\"25\",\"timezone\":\"Asia/Hong_Kong\",\"time_difference1\":\"8\",\"time_difference2\":\"8\",\"timezone_cities\":\"Beijing, Perth, Singapore, Hong Kong\"},{\"timezone_id\":\"26\",\"timezone\":\"Asia/Tokyo\",\"time_difference1\":\"9\",\"time_difference2\":\"9\",\"timezone_cities\":\"Tokyo, Seoul, Osaka, Sapporo, Yakutsk\"},{\"timezone_id\":\"27\",\"timezone\":\"Australia/Adelaide\",\"time_difference1\":\"9.5\",\"time_difference2\":\"10.5\",\"timezone_cities\":\"Adelaide, Darwin\"},{\"timezone_id\":\"28\",\"timezone\":\"Pacific/Guam\",\"time_difference1\":\"10\",\"time_difference2\":\"10\",\"timezone_cities\":\"Eastern Australia, Guam, Vladivostok\"},{\"timezone_id\":\"29\",\"timezone\":\"Asia/Sakhalin\",\"time_difference1\":\"11\",\"time_difference2\":\"11\",\"timezone_cities\":\"Magadan, Solomon Islands, New Caledonia\"},{\"timezone_id\":\"30\",\"timezone\":\"Pacific/Kwajalein\",\"time_difference1\":\"12\",\"time_difference2\":\"12\",\"timezone_cities\":\"Auckland, Wellington, Fiji, Kamchatka\"}]}');
+  dynamic get TimeZoneValue => _TimeZoneValue;
+  set TimeZoneValue(dynamic _value) {
+    notifyListeners();
+
+    _TimeZoneValue = _value;
+  }
+
+  String _passwordStatus = '';
+  String get passwordStatus => _passwordStatus;
+  set passwordStatus(String _value) {
+    notifyListeners();
+
+    _passwordStatus = _value;
+  }
+
+  String _passMsg = '';
+  String get passMsg => _passMsg;
+  set passMsg(String _value) {
+    notifyListeners();
+
+    _passMsg = _value;
+  }
+
+  String _isAnswerSelected = '0';
+  String get isAnswerSelected => _isAnswerSelected;
+  set isAnswerSelected(String _value) {
+    notifyListeners();
+
+    _isAnswerSelected = _value;
+  }
+
+  String _loginPassword = '';
+  String get loginPassword => _loginPassword;
+  set loginPassword(String _value) {
+    notifyListeners();
+
+    _loginPassword = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -414,33 +414,15 @@ class _ResultPageWidgetState extends State<ResultPageWidget>
                                                                     CrossAxisAlignment
                                                                         .start,
                                                                 children: [
-                                                                  Text(
-                                                                    functions.addTwoString(
-                                                                        questionListIndex
-                                                                            .toString()),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .subtitle1,
-                                                                  ),
                                                                   Expanded(
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              15,
-                                                                              0,
-                                                                              0,
-                                                                              0),
-                                                                      child:
-                                                                          Text(
-                                                                        functions
-                                                                            .getHtmlQuestions(getJsonField(
-                                                                          questionListItem,
-                                                                          r'''$.question''',
-                                                                        ).toString()),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .subtitle1,
-                                                                      ),
+                                                                    child: Text(
+                                                                      '${functions.addTwoString(questionListIndex.toString())}. ${functions.getHtmlQuestions(getJsonField(
+                                                                        questionListItem,
+                                                                        r'''$.question''',
+                                                                      ).toString())}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .subtitle1,
                                                                     ),
                                                                   ),
                                                                 ],

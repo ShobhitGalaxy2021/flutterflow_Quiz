@@ -38,7 +38,7 @@ class _MainQuizPageCopyWidgetState extends State<MainQuizPageCopyWidget> {
         tempTestId: getJsonField(
           FFAppState().testDetail,
           r'''$.student_test_status[0]["temp_test_id"]''',
-        ).toString(),
+        ).toString().toString(),
         sectionId: '0',
         responseType: '1',
       );

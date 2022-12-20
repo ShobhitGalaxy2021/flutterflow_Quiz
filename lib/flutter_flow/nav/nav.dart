@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
+
 import '../../auth/firebase_user_provider.dart';
 
 import '../../index.dart';
@@ -78,11 +79,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? DashboardWidget() : SignInWidget(),
           routes: [
             FFRoute(
-              name: 'createProfile',
-              path: 'createProfile',
-              builder: (context, params) => CreateProfileWidget(),
-            ),
-            FFRoute(
               name: 'phoneSignIn',
               path: 'phoneSignIn',
               builder: (context, params) => PhoneSignInWidget(),
@@ -153,16 +149,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => MainQuizPageWidget(),
             ),
             FFRoute(
-              name: 'EditAccountDetails',
-              path: 'editAccountDetails',
-              builder: (context, params) => EditAccountDetailsWidget(),
-            ),
-            FFRoute(
               name: 'ResultPage',
               path: 'resultPage',
               builder: (context, params) => ResultPageWidget(
                 temp: params.getParam('temp', ParamType.int),
               ),
+            ),
+            FFRoute(
+              name: 'EditAccountDetails',
+              path: 'editAccountDetails',
+              builder: (context, params) => EditAccountDetailsWidget(),
             ),
             FFRoute(
               name: 'testForFixColumn',

@@ -425,6 +425,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                             r'''$.data.access_token''',
                           ).toString();
                           FFAppState().selectedItem = 'Dashboard';
+                          FFAppState().loginPassword =
+                              passwordTextFieldController!.text;
                         });
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -444,7 +446,16 @@ class _SignInWidgetState extends State<SignInWidget> {
                           ),
                         );
 
-                        context.pushNamed('Dashboard');
+                        context.goNamed(
+                          'Dashboard',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.rightToLeft,
+                              duration: Duration(milliseconds: 300),
+                            ),
+                          },
+                        );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

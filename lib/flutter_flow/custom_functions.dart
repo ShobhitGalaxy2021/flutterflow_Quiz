@@ -34,8 +34,12 @@ String str2str(
   return str1 + "hr" + " " + str2 + "min";
 }
 
-int test1(List<String>? jsonObj) {
-  return 0;
+String test1(List<String>? jsonObj) {
+  String strWithDig = "(GMT -5) pacific/asia";
+  // print(strWithDig.replaceAll(RegExp(r'[0-9]'), '')); // abcdefg
+  var text = (strWithDig.replaceAll(RegExp(r'[0-9]'), ''));
+  var newText = text.substring(8);
+  return newText;
 }
 
 dynamic returnStaticJson() {
@@ -92,23 +96,16 @@ List<String>? joinTwostring(
 ) {
   var arr = ["ä"];
   for (var i = 0; i < str1.length; i++) {
-    var data1 = '${str2[i]}';
-    var data = '(GMT ${str1[i]})';
-    arr.add(data + data1);
-  }
-  dynamic arr1 = arr.removeAt(0);
-  return arr;
-}
-
-List<String>? joinTwostringCopy(
-  List<String> str1,
-  List<String> str2,
-) {
-  var arr = ["ä"];
-  for (var i = 0; i < str1.length; i++) {
-    var data1 = '${str2[i]}';
-    var data = '(GMT ${str1[i]})';
-    arr.add(data + data1);
+    var timeZone = '${str2[i]}';
+    var timeDiff = '${str1[i]}';
+    //  var timeDiff = '(GMT${str1[i]})';
+    if (timeDiff.contains(RegExp(r'^[a-zA-Z0-9]+$'))) {
+      var timediffWithPlus = ('(GMT+$timeDiff)');
+      arr.add(timediffWithPlus + ' $timeZone');
+    } else {
+      var timeDiffWithoutPlus = ('(GMT$timeDiff)');
+      arr.add(timeDiffWithoutPlus + ' $timeZone');
+    }
   }
   dynamic arr1 = arr.removeAt(0);
   return arr;
@@ -172,10 +169,105 @@ String getHtmlQuestions(String questions) {
   var text = questions;
 
   RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
-  String parsedstring2 = text.replaceAll(exp, ' ');
-  return parsedstring2;
+  var parsedstring2 = text.replaceAll(exp, ' ');
+  // var multiline = ' \n\t Inside which HTML element do we put the JavaScript?  ';
+  var singleline = parsedstring2.replaceAll("\n", " ");
+  return singleline;
 }
 
 String forSelectedOption() {
   return 'Option 3';
+}
+
+String gwtIndexValue(
+  List<dynamic> list,
+  String id,
+) {
+  var timezoneId = int.parse(id) - 2;
+
+  var objectValue = list[timezoneId];
+  var parsedJson = json.decode(objectValue);
+  //var parsedJson = objectValue;
+  var timezone = parsedJson['timezone'];
+  var timedifferent = parsedJson[('time_difference1')];
+  var result = ('(GMT $timedifferent)  + $timezone');
+  return result;
+  //   return 'true';
+
+  return 'false1';
+}
+
+String updateTimezoneValue(
+  dynamic timeZoneRes,
+  String timezone,
+) {
+  String strWithDig = timezone;
+  var text = (strWithDig.replaceAll(RegExp(r'[0-9]'), ''));
+  var newText = text.substring(7);
+  var listArray = timeZoneRes['response'] as List;
+  for (var j = 0; j < listArray.length; j++) {
+    if (listArray[j]["timezone"] == newText) {
+      return listArray[j]["timezone_id"];
+    }
+  }
+  return 'nothing select';
+}
+
+String getTimeZoneByID(
+  dynamic timeZoneRes,
+  String timeZoneId,
+) {
+  var listArray = timeZoneRes['response'] as List;
+
+  for (var j = 0; j < listArray.length; j++) {
+    if (listArray[j]["timezone_id"] == timeZoneId) {
+      var timeZoneName = listArray[j]["timezone"];
+      var timeDiff = listArray[j]["time_difference1"];
+      if (timeDiff.contains(RegExp(r'^[a-zA-Z0-9]+$'))) {
+        return ('(GMT +$timeDiff) $timeZoneName');
+      } else {
+        return ('(GMT $timeDiff) $timeZoneName');
+      }
+      //return result;
+    }
+  }
+  return 'false';
+}
+
+String? trimString(String questionString) {
+  // String str = '   Hello TutorialKart         ';
+
+  //trim string
+  String result = questionString.trim();
+  return result;
+}
+
+String campareToString(
+  String str1,
+  String str2,
+) {
+  // campare two  password value
+  String pass1 = str1;
+  String pass2 = str2;
+  String output;
+  if ((pass1 == pass2) && (pass1.length != null) && (pass2.length != null)) {
+    output = 'Passwords Matched.';
+  } else if (pass1.isEmpty && pass1.isEmpty) {
+    output = 'Empty Passwords Are Not Allowed.';
+  } else if ((pass1.length != null) && (pass2.length != null)) {
+    output = 'Passwords Don\'t Matched...';
+  } else {
+    output = 'Bad Request!';
+  }
+  return output;
+}
+
+String checkNullValue(
+  String password,
+  String oldPassword,
+) {
+  if (password.isEmpty) {
+    return oldPassword;
+  }
+  return password;
 }

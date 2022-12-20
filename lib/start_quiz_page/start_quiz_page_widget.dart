@@ -61,12 +61,25 @@ class _StartQuizPageWidgetState extends State<StartQuizPageWidget> {
                 borderWidth: 1,
                 buttonSize: 60,
                 icon: Icon(
-                  Icons.menu,
+                  Icons.arrow_back,
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                   size: 30,
                 ),
                 onPressed: () async {
-                  scaffoldKey.currentState!.openDrawer();
+                  context.goNamed(
+                    'Dashboard',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
+
+                  setState(() {
+                    FFAppState().selectedItem = 'Dashboard';
+                  });
                 },
               ),
               title: Text(
@@ -349,8 +362,8 @@ class _StartQuizPageWidgetState extends State<StartQuizPageWidget> {
                                   );
                                 });
 
-                                context.pushNamed(
-                                  'MainQuizPageCopy',
+                                context.goNamed(
+                                  'MainQuizPage',
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,

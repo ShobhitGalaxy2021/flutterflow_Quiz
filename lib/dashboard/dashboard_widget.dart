@@ -299,7 +299,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                 onTap:
                                                                     () async {
                                                                   context
-                                                                      .pushNamed(
+                                                                      .goNamed(
                                                                     'ResultPage',
                                                                     queryParams:
                                                                         {
